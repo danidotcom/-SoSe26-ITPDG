@@ -2,18 +2,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-safe_gif = False
+safe_gif = True
+
 
 def parameters():
     return {
         "l": -1,
         "r": 1,
         "f": lambda x: x,
-        "n_terms": 50,
+        "n_terms": 20,
         "n_plot": 1200,
         "n_integration": 5000,
         "interval_label": "[-2, 2]",
     }
+
 
 
 def compute_fourier_coefficients(f, l, r, n_terms, n_integration=5000):
@@ -44,6 +46,7 @@ def compute_fourier_coefficients(f, l, r, n_terms, n_integration=5000):
     return a0, a, b
 
 
+
 def evaluate_fourier_series(x, coeffs, l, r, n_terms=None):
     a0, a, b = coeffs
     max_terms = len(a) - 1
@@ -59,6 +62,7 @@ def evaluate_fourier_series(x, coeffs, l, r, n_terms=None):
     for n in range(1, n_terms + 1):
         s += a[n] * np.cos(n * phase_x) + b[n] * np.sin(n * phase_x)
     return s
+
 
 
 def build_partial_sums(x, coeffs, l, r):
@@ -101,7 +105,15 @@ def plot_selected_partial_sums(x, f_x, partial_sums, selection=(0, 1, 2, 5, 10, 
 
 
 
-def animate_fourier_series(x, f_x, partial_sums, interval=120, repeat=True):
+def animate_fourier_series(
+    x,
+    f_x,
+    partial_sums,
+    interval=120,
+    repeat=True,
+    save_path=None,
+    fps=20,
+):
     fig, ax = plt.subplots(figsize=(12, 6))
 
     ax.plot(x, f_x, linewidth=2, label="Original function")
@@ -133,6 +145,11 @@ def animate_fourier_series(x, f_x, partial_sums, interval=120, repeat=True):
     )
 
     plt.tight_layout()
+
+    if save_path is not None:
+        ani.save(save_path, writer="pillow", fps=fps)
+        print(f"GIF saved to: {save_path}")
+
     plt.show()
     return ani
 
@@ -162,23 +179,26 @@ if __name__ == "__main__":
     # Static overview plot
     plot_selected_partial_sums(x, f_x, partial_sums, selection=(0, 1, 2, 5, 10, 20, 50))
 
-    # Animation
-    ani = animate_fourier_series(x, f_x, partial_sums, interval=120)
-
-    # Optional: save animation
-    if safe_gif == True:
+    if safe_gif:
         from pathlib import Path
 
-        gifs_dir = Path("./gifs")
-        gifs_dir.mkdir(exist_ok=True)
+        gifs_dir = Path("./Fourier_Reihen/gifs")
+        gifs_dir.mkdir(parents=True, exist_ok=True)
 
         i = 1
-        while (gifs_dir / f"fourier_series_animation_{i}.gif").exists():
+        while (gifs_dir / f"fourier_series_{i}.gif").exists():
             i += 1
 
-        save_path = gifs_dir / f"fourier_series_animation_{i}.gif"
-        print(save_path)
-        ani = animate_fourier_series(x, f_x, partial_sums, interval=40, save_path=str(save_path), fps=20)
-        
-        # ani = animate_fourier_transform(data, interval=40, save_path="fourier_transform_animation.mp4", fps=20)
+        save_path = gifs_dir / f"fourier_series_{i}.gif"
 
+        ani = animate_fourier_series(
+            x,
+            f_x,
+            partial_sums,
+            interval=40,
+            repeat=True,
+            save_path=str(save_path),
+            fps=2,
+        )
+    else:
+        ani = animate_fourier_series(x, f_x, partial_sums, interval=120)
