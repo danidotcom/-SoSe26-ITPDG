@@ -18,7 +18,6 @@ Zu jedem Thema sollen nach und nach Visualisierungen, numerische Experimente und
 - [Faltung](./faltung/) – Visualisierung der Faltung und ihrer Bedeutung
 - [Fouriertransformation](./fourier_transformation/) – Analyse von Funktionen im Frequenzraum
 
-![Animation](./Fourier_Transformation/gifs/fourierreihe.gif)
 <!--
 - [Wärmeleitungsgleichung](./waermeleitungsgleichung/) – Diffusion und zeitliche Entwicklung von Lösungen
 - [Wellengleichung](./wellengleichung/) – Wellenausbreitung und Schwingungsverhalten
@@ -29,6 +28,8 @@ Zu jedem Thema sollen nach und nach Visualisierungen, numerische Experimente und
 
 <!--
 ---
+
+![Animation](./Fourier_Transformation/gifs/fourierreihe.gif)
 
 ## Inhalte
 
