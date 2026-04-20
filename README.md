@@ -16,7 +16,7 @@ Zu jedem Thema sollen nach und nach Visualisierungen, numerische Experimente und
 
 - [Fourierreihen](./Fourier_Reihen/) – Approximation periodischer Funktionen durch Partialsummen
 - [Faltung](./faltung/) – Visualisierung der Faltung und ihrer Bedeutung
-- [Fouriertransformation](./fouriertransformation/) – Analyse von Funktionen im Frequenzraum
+- [Fouriertransformation](./fourier_transformation/) – Analyse von Funktionen im Frequenzraum
 <!--
 - [Wärmeleitungsgleichung](./waermeleitungsgleichung/) – Diffusion und zeitliche Entwicklung von Lösungen
 - [Wellengleichung](./wellengleichung/) – Wellenausbreitung und Schwingungsverhalten
