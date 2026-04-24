@@ -6,8 +6,8 @@ safe_gif = True
 
 def parameters():
     return {
-        "l": -10.0,
-        "r": 10.0,
+        "l": -1.0,
+        "r": 1.0,
         # Example function. Replace directly if you want.
         # "f": lambda x: np.exp(-(x**2)) * (1.0 + 0.4 * np.cos(6.0 * x)),
         # "f": lambda x: np.where(np.abs(x + 0.5*(l + r)) <= 0.5*(r - l) <= 1, -np.abs(x)+1, 0.0),
@@ -15,7 +15,8 @@ def parameters():
         # "f": lambda x: np.where(np.abs(x + 0.5*(l + r)) <= 0.5*(r - l) , -np.abs(x)+1, 0.0),
         # "f": lambda x: -np.abs(x) + r,
         # "f": lambda x: np.sin(x), # Hausaufgabe 2.1
-        "f": lambda x: np.exp(-np.abs(x)),
+        # "f": lambda x: np.exp(-np.abs(x)), # Tutoriumsaufgabe 2.1
+        "f": lambda x: 1, # Skript Beispiel 4 mit a = 1
         # "f": lambda x: np.exp(-x**2),
         "n_plot": 1200,
         "n_integration": 5000,
